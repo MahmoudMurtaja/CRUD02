@@ -1,0 +1,19 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+<form asp-action="Create" method="post">
+    <input type="text" asp-for="Name" placeholder="Name" />
+    <input type="text" asp-for="Email" placeholder="Email" />
+    <input type="text" asp-for="Mobile" placeholder="Mobile" />
+    <select asp-for="DepartmentId" asp-items="@ViewBag.departmentList">
+        
+    </select>
+    <select asp-for="EmployeeTypeId" asp-items="@ViewBag.EmployeeTypeList">
+        
+    </select>
+    <input type="submit" value="Submit" />
+</form>
+

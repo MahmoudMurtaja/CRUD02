@@ -1,0 +1,55 @@
+﻿@model List<Employee>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Employee Management</h1>
+<hr />
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>@TempData["msg"]</strong> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+<a href="~/Employee/Create" class="btn btn-primary">Create</a>
+@if (Model.Any())
+{
+<table class="table table-hover">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Department</th>
+        <th>Type</th>
+        <th>Data</th>
+        <th>Operatinos</th>
+    </tr>
+    @foreach (var item in Model)
+	{
+<tr>
+    <th>@item.Id</th>
+    <th>@item.Name</th>
+    <th>@item.Email</th>
+    <th>@item.Mobile</th>
+    <th>@item.Department.Name</th>
+    <th>@item.EmployeeType.Name</th>
+    <th>@item.CreatedAt.ToString("dd/MM/yyyy")</th>
+    <th>
+        <a class="btn btn-danger" href="~/Employee/Delete/@item.Id">Delete</a>
+        <a class="btn btn-warning" href="~/Employee/Edit/@item.Id">Edit</a>
+    </th>
+</tr> 
+	}
+</table>
+}
+else
+{
+<div class="alert alert-warning">
+    No Employee !!
+</div>
+}
+
